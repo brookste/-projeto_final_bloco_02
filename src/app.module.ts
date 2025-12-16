@@ -5,7 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { Produtos } from './produtos/entities/produto.entity';
-import { ProdutosModule } from './produtos/entities/produto.module';
+import { AuthModule } from './auth/auth.module';
+import { ProdutosModule } from './produtos/produto.module';
+import { Usuario } from './usuario/entities/usuario.entity';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -16,11 +19,13 @@ import { ProdutosModule } from './produtos/entities/produto.module';
       username: 'root',
       password: 'root',
       database: 'db_farmacia',
-      entities: [Categoria, Produtos],
+      entities: [Categoria, Produtos, Usuario],
       synchronize: true,
     }),
     CategoriaModule,
-    ProdutosModule
+    ProdutosModule,
+    AuthModule,
+    UsuarioModule
   ],
   controllers: [],
   providers: [],
